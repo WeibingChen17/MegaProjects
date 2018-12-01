@@ -6,5 +6,5 @@ y_0 = \sqrt{2} - 1; a_0 = 6 - 4\sqrt{2}
 f(y) = (1-y^4)^{1/4}
 y_{k+1} = (1 -f(y_k)) / (1 + f(y_k)) ; a_{k+1} = a_k(1 + y_{k+1})^4 - 2^{2k+3}y_{k+1}(1 + y_{k+1} + y_{k+1}^2)
 $$
-It works.  However, it is very bad to control the precision: we don't how many precision of $y$ and $a$ is enough to calculate a $\pi$ of $n$ precisin. All the numbers (1, 4, 6, $\sqrt{2}$) also need to have very high precision, which means not very efficient. When n = 10000, it needs 20000 precision of y and a. For 200000, 2 times of precision is not enough. This method is very efficient. 
+It works.  However, it is very bad to control the precision: we don't how many precision of $y$ and $a$ is enough to calculate a $\pi$ of $n$ precisin. All the numbers (1, 4, 6, $\sqrt{2}$) also need to have very high precision, which means not very efficient. 
 
