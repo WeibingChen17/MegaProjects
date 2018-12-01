@@ -11,7 +11,7 @@ PiCalculator::~PiCalculator(){
 }
 
 void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
-    int n = int(m * 3.32) + 1; // m * log_2(10)
+    int n = 2 * int(m * 3.32) ; // 2 * m * log_2(10), which is very enough
     mpf_init2(res, n);
     mpf_init2(m_pi, n);
     mpf_init2(m_y, n);
