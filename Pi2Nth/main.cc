@@ -1,14 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "pi2nth.h"
 
-int main(){
+int main(int argc, char *argv[]){
+    if (argc == 1) return 1;
     PiCalculator pc;
     mpf_t res;
     mpf_init(res);
-    pc.calculateUpTo(10, res);
-    gmp_printf("%.*Ff \n", 10, res);
-    pc.calculateUpTo(20, res);
-    gmp_printf("%.*Ff \n", 20, res);
-    pc.calculateUpTo(100, res);
-    gmp_printf("%.*Ff \n", 100, res);
+    int n = atoi(argv[1]);
+    pc.calculateUpTo(n, res);
+    gmp_printf("%.*Ff \n", n, res);
+    return 0;
 }

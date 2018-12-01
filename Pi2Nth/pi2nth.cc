@@ -10,8 +10,8 @@ PiCalculator::PiCalculator(){
 PiCalculator::~PiCalculator(){
 }
 
-void PiCalculator::calculateUpTo(unsigned int n, mpf_t res){
-    n = n + 1;
+void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
+    int n = int(m * 3.32) + 1; // m * log_2(10)
     mpf_init2(res, n);
     mpf_init2(m_pi, n);
     mpf_init2(m_y, n);
@@ -27,17 +27,14 @@ void PiCalculator::calculateUpTo(unsigned int n, mpf_t res){
     mpf_set_d(six, 6.0);
 
     mpf_t sqrt2, m4sqrt2; 
-    mpf_init(sqrt2);
+    mpf_init2(sqrt2, n);
     mpf_sqrt(sqrt2, two);
-    mpf_init(m_y);
     mpf_sub(m_y, sqrt2, one);
 
-    mpf_init(m4sqrt2);
+    mpf_init2(m4sqrt2, n);
     mpf_mul(m4sqrt2, four, sqrt2);
-    mpf_init(m_a);
     mpf_sub(m_a, six, m4sqrt2);
 
-    mpf_init2(m_pi, 1);
     mpf_set_d(m_pi, 3.0);
     mpf_clear(sqrt2);
     mpf_clear(m4sqrt2);
@@ -85,20 +82,16 @@ void PiCalculator::calculateUpTo(unsigned int n, mpf_t res){
         mpf_t new_pi;
         mpf_init2(new_pi, n);
         mpf_div(new_pi, one, m_a);
-        if (mpf_eq(new_pi, m_pi, n-1)){
+        if (mpf_eq(new_pi, m_pi, m)){
             mpf_set(m_pi, new_pi);
             mpf_clear(new_pi);
             m_k += 1;
-            printf("%d: ", (int)m_k);
-            print_mpf_t(n, m_pi);
             break;
         }
         mpf_set(m_pi, new_pi);
         mpf_clear(new_pi);
 
         m_k += 1;
-        printf("%d: ", (int)m_k);
-        print_mpf_t(n, m_pi);
     }
 
     mpf_clear(y2);
