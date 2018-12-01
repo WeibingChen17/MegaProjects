@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-lgmp -lgmpxx
-DEBUG=-g
+DEBUG=
 
 main: main.o pi2nth.o
 	$(CC) $^ $(CFLAGS) -o main
