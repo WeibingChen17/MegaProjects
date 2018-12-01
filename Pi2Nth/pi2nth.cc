@@ -12,14 +12,15 @@ PiCalculator::~PiCalculator(){
 
 void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
     int n = 2 * int(m * 3.32) ; // 2 * m * log_2(10), which is very enough
-    mpf_init2(res, n);
-    mpf_init2(m_pi, n);
-    mpf_init2(m_y, n);
-    mpf_init2(m_a, n);
-    mpf_init2(one, n);
-    mpf_init2(two, n);
-    mpf_init2(four, n);
-    mpf_init2(six, n);
+    mpf_set_default_prec(n);
+    mpf_init(res);
+    mpf_init(m_pi);
+    mpf_init(m_y);
+    mpf_init(m_a);
+    mpf_init(one);
+    mpf_init(two);
+    mpf_init(four);
+    mpf_init(six);
 
     mpf_set_d(one, 1.0);
     mpf_set_d(two, 2.0);
@@ -27,11 +28,11 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
     mpf_set_d(six, 6.0);
 
     mpf_t sqrt2, m4sqrt2; 
-    mpf_init2(sqrt2, n);
+    mpf_init(sqrt2);
     mpf_sqrt(sqrt2, two);
     mpf_sub(m_y, sqrt2, one);
 
-    mpf_init2(m4sqrt2, n);
+    mpf_init(m4sqrt2);
     mpf_mul(m4sqrt2, four, sqrt2);
     mpf_sub(m_a, six, m4sqrt2);
 
@@ -43,21 +44,21 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
 
     mpf_t y2, y4, m1my4, m1my4_4, m1my4_4_n1, uf, df;
     mpf_t m1py, m1py4, m1pypyy, pow2ip3, am1py4, pow2y, pow2yy, yy;
-    mpf_init2(y2, n);
-    mpf_init2(y4, n);
-    mpf_init2(m1my4, n);
-    mpf_init2(m1my4_4, n);
-    mpf_init2(m1my4_4_n1, n);
-    mpf_init2(uf, n);
-    mpf_init2(df, n);
-    mpf_init2(m1py, n);
-    mpf_init2(m1py4, n);
-    mpf_init2(pow2ip3, n);
-    mpf_init2(am1py4, n);
-    mpf_init2(m1pypyy, n);
-    mpf_init2(pow2y, n);
-    mpf_init2(pow2yy, n);
-    mpf_init2(yy, n);
+    mpf_init(y2);
+    mpf_init(y4);
+    mpf_init(m1my4);
+    mpf_init(m1my4_4);
+    mpf_init(m1my4_4_n1);
+    mpf_init(uf);
+    mpf_init(df);
+    mpf_init(m1py);
+    mpf_init(m1py4);
+    mpf_init(pow2ip3);
+    mpf_init(am1py4);
+    mpf_init(m1pypyy);
+    mpf_init(pow2y);
+    mpf_init(pow2yy);
+    mpf_init(yy);
 
     while (true){
         mpf_pow_ui(y2, m_y, 2);
@@ -80,7 +81,7 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
         mpf_sub(m_a, am1py4, pow2yy);
 
         mpf_t new_pi;
-        mpf_init2(new_pi, n);
+        mpf_init(new_pi);
         mpf_div(new_pi, one, m_a);
         if (mpf_eq(new_pi, m_pi, m)){
             mpf_set(m_pi, new_pi);
@@ -90,9 +91,10 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
         }
         mpf_set(m_pi, new_pi);
         mpf_clear(new_pi);
-
         m_k += 1;
     }
+
+    mpf_set(res, m_pi);
 
     mpf_clear(y2);
     mpf_clear(y4);
@@ -109,8 +111,6 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
     mpf_clear(pow2y);
     mpf_clear(pow2yy);
     mpf_clear(yy);
-
-    mpf_set(res, m_pi);
 
     mpf_clear(m_y);
     mpf_clear(m_a);

@@ -1,5 +1,5 @@
 # Calculat Pi up to N digit after decimal
-## Use GMP 
+## Use GMP: iterative 
 The basic idea is to use GMP and an iterative algorithm:
 $$
 y_0 = \sqrt{2} - 1; a_0 = 6 - 4\sqrt{2}
