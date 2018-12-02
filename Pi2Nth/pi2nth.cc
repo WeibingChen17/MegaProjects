@@ -11,7 +11,7 @@ PiCalculator::~PiCalculator(){
 }
 
 size_t PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
-    int n = int(1.2 * m * 3.32) ; // 1.2 * m * log_2(10), which is enough according to error estimate
+    int n = int(m * 3.33) ; //  log_2(10) = 3.323 < 3.33, which is enough according to error estimate
     mpf_set_default_prec(n);
     mpf_init(res);
     mpf_init(m_pi);
