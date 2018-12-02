@@ -1,10 +1,12 @@
-# Calculat Pi up to N digit after decimal
+# Calculate Pi up to N digit after decimal
 ## Use GMP: iterative 
 The basic idea is to use GMP and an iterative algorithm:
 
 $$
 y_0 = \sqrt{2} - 1; a_0 = 6 - 4\sqrt{2};
-f(y) = (1-y^4)^{1/4}
+
+f(y) = (1-y^4)^{1/4};
+
 y_{k+1} = (1 -f(y_k)) / (1 + f(y_k)) ; a_{k+1} = a_k(1 + y_{k+1})^4 - 2^{2k+3}y_{k+1}(1 + y_{k+1} + y_{k+1}^2)
 $$
 
