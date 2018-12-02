@@ -7,8 +7,9 @@ int main(int argc, char *argv[]){
     PiCalculator pc;
     mpf_t res;
     mpf_init(res);
-    int n = atoi(argv[1]);
-    pc.calculateUpTo(n, res);
-    gmp_printf("%.*Ff \n", n, res);
+    int m = atoi(argv[1]);
+    size_t k = pc.calculateUpTo(m, res);
+    gmp_printf("%.*Ff \n", m, res);
+    printf("It takes %d steps.\n", int(k));
     return 0;
 }

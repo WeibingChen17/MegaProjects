@@ -10,8 +10,8 @@ PiCalculator::PiCalculator(){
 PiCalculator::~PiCalculator(){
 }
 
-void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
-    int n = 2 * int(m * 3.32) ; // 2 * m * log_2(10), which is very enough
+size_t PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
+    int n = int(1.2 * m * 3.32) ; // 1.2 * m * log_2(10), which is enough according to error estimate
     mpf_set_default_prec(n);
     mpf_init(res);
     mpf_init(m_pi);
@@ -95,6 +95,7 @@ void PiCalculator::calculateUpTo(unsigned int m, mpf_t res){
     }
 
     mpf_set(res, m_pi);
+    return m_k;
 
     mpf_clear(y2);
     mpf_clear(y4);
