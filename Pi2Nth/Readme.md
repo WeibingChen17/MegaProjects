@@ -1,5 +1,5 @@
 # Calculate Pi up to N digit after decimal
-## Use GMP: iterative 
+## Use GMP and Borwein's algorithm
 The basic idea is to use GMP and an iterative algorithm:
 
 $$
@@ -10,5 +10,8 @@ f(y) = (1-y^4)^{1/4};
 y_{k+1} = (1 -f(y_k)) / (1 + f(y_k)) ; a_{k+1} = a_k(1 + y_{k+1})^4 - 2^{2k+3}y_{k+1}(1 + y_{k+1} + y_{k+1}^2)
 $$
 
-It works.  However, it is very bad to control the precision: we don't how many precision of $y$ and $a$ is enough to calculate a $\pi$ of $n$ precisin. All the numbers (1, 4, 6, $\sqrt{2}$) also need to have very high precision, which means not very efficient. 
+Note: to get the $\Pi$ of $m$ precision, we need to set the precision of all the numbers to be of the same precision at the beginning. That is, it is not a self-correcting algorithm. So we need to calculate from beginning for each input.
 
+## Todo
+* Caching the calcuated pi for frequent inquiry.
+* Keep a (time) limit to how far the program will go.
