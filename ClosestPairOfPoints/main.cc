@@ -4,7 +4,9 @@
 #include <string>
 
 int main(int argc, char* argv[]){
-    if (argc != 3) return 1;
+    if (argc != 3) {
+        std::cout << "main number_of_points range" << std::endl;
+    }
     int numP = std::stoi(argv[1]);
     float range = std::stof(argv[2]);
     Cluster<Point2D> points(numP);

@@ -6,7 +6,11 @@ template<typename T>
 class Cluster {
     public:
         Cluster(size_t n): m_numberOfPoints(n){ 
-            m_points.reserve(n);
+            for (size_t i = 0; i < m_numberOfPoints; ++i){
+                T point;
+                m_points.push_back(point);
+    
+            }
         }
 
         Cluster(const std::vector<T>& pts){
@@ -22,15 +26,11 @@ class Cluster {
         
         ~Cluster() {};
 
-        size_t getNumberOfPoints() {
-            return m_numberOfPoints;
-        }
+        size_t getNumberOfPoints() { return m_numberOfPoints; }
 
         void randomInit(float range){
-            for (size_t i = 0; i < m_numberOfPoints; i++){
-                T point;
-                point.setRandomInRange(range);
-                m_points.push_back(point);
+            for (auto & a_point : m_points){
+                a_point.setRandomInRange(range);
             }
         }
 

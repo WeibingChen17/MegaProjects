@@ -1,5 +1,12 @@
-CC=clang++
-CFLAGS=-Wall -std=c++11 -g
+OS := $(shell uname -s)
+ifeq ($(OS), Linux)
+	CC=g++
+endif
+ifeq ($(OS), Darwin) 
+	CC=clang++
+endif
+
+CFLAGS=-Wall -std=c++11
 
 main: Point2D.o main.o
 	$(CC) $(CFLAGS) $^ -o main
