@@ -11,6 +11,8 @@ int main(int argc, char* argv[]){
     float range = std::stof(argv[2]);
     Cluster<Point2D> points(numP);
     points.randomInit(range);
-    Cluster<Point2D> pair = points.getClosestPair(); 
-    std::cout << pair;
+    Cluster<Point2D> pair1 = points.getClosestPair("bf"); 
+    std::cout << pair1;
+    Cluster<Point2D> pair2 = points.getClosestPair("dc"); 
+    std::cout << pair2;
 }

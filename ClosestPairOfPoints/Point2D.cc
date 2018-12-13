@@ -22,7 +22,18 @@ void Point2D::setRandomInRange(float range){
 float Point2D::distanceTo(Point2D other_point) const{
     float sum = 0.0;
     for (size_t i = 0; i < m_dim; ++i){
-        sum += m_coor[i];
+        sum += (m_coor[i] - other_point.m_coor[i]) * 
+            (m_coor[i] - other_point.m_coor[i]);
     }
     return std::sqrt(sum);
+}
+float& Point2D::operator[](size_t ind){
+    if (ind < 0 or ind >= m_dim)
+        throw("Out of Boundary");
+    return m_coor[ind];
+}
+const float& Point2D::operator[](size_t ind) const{
+    if (ind < 0 or ind >= m_dim)
+        throw("Out of Boundary");
+    return m_coor[ind];
 }

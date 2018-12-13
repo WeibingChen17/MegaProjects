@@ -5,6 +5,8 @@ class Point2D{
         ~Point2D() {};
         void setRandomInRange(float range);
         float distanceTo(Point2D other_point) const;
+        const float& operator[](size_t ind) const;
+        float& operator[](size_t ind);
         friend std::ostream& operator<<(std::ostream& outstream, const Point2D& p){
             outstream << "(";
             for (size_t i = 0; i < p.m_dim - 1; ++i){

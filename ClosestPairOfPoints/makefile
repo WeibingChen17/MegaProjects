@@ -6,7 +6,7 @@ ifeq ($(OS), Darwin)
 	CC=clang++
 endif
 
-CFLAGS=-Wall -std=c++11
+CFLAGS=-Wall -std=c++11 -g
 
 main: Point2D.o main.o
 	$(CC) $(CFLAGS) $^ -o main
