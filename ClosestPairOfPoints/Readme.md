@@ -6,3 +6,6 @@ This is a general engine of finding the pair of *points* with the least *distanc
 
 ## Algorithm
 Use divide-and-conquer algorithm for 2D points.
+
+## Todo
+* improve the divideAndConquer to avoid copy. Use iterator and return a tuple
