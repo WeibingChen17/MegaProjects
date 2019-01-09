@@ -3,7 +3,10 @@
 #include "pi2nth.h"
 
 int main(int argc, char *argv[]){
-    if (argc == 1) return 1;
+    if (argc == 1) {
+        printf("Example: ./main 1000\n");
+        return 1;
+    }
     PiCalculator pc;
     mpf_t res;
     mpf_init(res);
